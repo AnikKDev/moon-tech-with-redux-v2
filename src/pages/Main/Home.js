@@ -7,20 +7,14 @@ import { loadProduct } from "../../redux/actions/productAction";
 import { loadProductData } from "../../redux/thunk/fetchProducts";
 
 const Home = () => {
-  const [products, setProducts] = useState([]);
   const dispatch = useDispatch();
   useEffect(() => {
-    /*  fetch("http://localhost:5000/products")
-      .then((res) => res.json())
-      .then((data) => dispatch(loadProduct(data.data))); */
-    /* const data = axios
-      .get("http://localhost:5000/products")
-      .then((res) => console.log(res.data.data));
-    console.log(data); */
     dispatch(loadProductData());
-  }, []);
-
+  }, [dispatch]);
+  // getting filter data
   const filters = useSelector((state) => state.filter.filters);
+  // getting products data
+  const products = useSelector((state) => state.product.products);
   const activeClass = "text-white  bg-indigo-500 border-white";
 
   // filtering
