@@ -1,16 +1,23 @@
+import axios from "axios";
 import React, { useEffect, useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import ProductCard from "../../components/ProductCard";
 import { toggleBrand, toggleStock } from "../../redux/actions/filterAction";
 import { loadProduct } from "../../redux/actions/productAction";
+import { loadProductData } from "../../redux/thunk/fetchProducts";
 
 const Home = () => {
   const [products, setProducts] = useState([]);
   const dispatch = useDispatch();
   useEffect(() => {
-    fetch("http://localhost:5000/products")
+    /*  fetch("http://localhost:5000/products")
       .then((res) => res.json())
-      .then((data) => dispatch(loadProduct(data.data)));
+      .then((data) => dispatch(loadProduct(data.data))); */
+    /* const data = axios
+      .get("http://localhost:5000/products")
+      .then((res) => console.log(res.data.data));
+    console.log(data); */
+    dispatch(loadProductData());
   }, []);
 
   const filters = useSelector((state) => state.filter.filters);
