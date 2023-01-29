@@ -1,6 +1,7 @@
 import {
   ADD_PRODUCT,
   ADD_TO_CART,
+  DELETE_PRODUCT,
   LOAD_PRODUCT,
   PRODUCT_LOADED,
   REMOVE_FROM_CART,
@@ -24,6 +25,13 @@ export const loadProduct = (product) => {
 export const removeProduct = (id) => {
   return {
     type: REMOVE_PRODUCT,
+    payload: id,
+  };
+};
+// deleting product action
+export const deleteProduct = (id) => {
+  return {
+    type: DELETE_PRODUCT,
     payload: id,
   };
 };
