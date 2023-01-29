@@ -3,6 +3,7 @@ import React from "react";
 import { useForm } from "react-hook-form";
 import { useDispatch, useSelector } from "react-redux";
 import { addProduct } from "../../redux/actions/productAction";
+import { addProductData } from "../../redux/thunk/addProductData";
 
 const AddProduct = () => {
   const { register, handleSubmit } = useForm();
@@ -31,7 +32,7 @@ const AddProduct = () => {
     } */
 
     // with thunk
-    dispatch(addProduct(product));
+    dispatch(addProductData(product));
   };
   const products = useSelector((state) => state);
   console.log(products);
